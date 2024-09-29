@@ -1,5 +1,6 @@
 package app.cashflow.api.user;
 
+import app.cashflow.api.account_plan.AccountPlan;
 import app.cashflow.api.bank_account.BankAccount;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
@@ -32,6 +33,11 @@ public class User implements UserDetails {
     @JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "fk_user_id"))
     @JsonManagedReference
     private List<BankAccount> bankAccounts = new ArrayList<>();
+
+    @OneToMany
+    @JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "fk_user_id_2"))
+    @JsonManagedReference
+    private List<AccountPlan> accountPlans = new ArrayList<>();
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

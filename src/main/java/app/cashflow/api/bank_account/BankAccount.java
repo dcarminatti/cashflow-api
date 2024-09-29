@@ -35,6 +35,7 @@ public class BankAccount {
     private Double accountBalance;
 
     @Column(name = "account_type")
+    @Enumerated(EnumType.STRING)
     private AccountType accountType;
 
     @OneToMany(cascade = CascadeType.ALL)

@@ -1,12 +1,11 @@
 package app.cashflow.api.auth;
 
-import app.cashflow.api.bank_account.BankAccount;
 import app.cashflow.api.user.User;
+import app.cashflow.api.user.UserResponseDTO;
 
-import java.util.List;
 
-public record LoginResponseDTO(String name, String email, String token, List<BankAccount> bankAccounts) {
+public record LoginResponseDTO(UserResponseDTO user, String token) {
     public LoginResponseDTO(User user, String token) {
-        this(user.getName(), user.getEmail(), token, user.getBankAccounts());
+        this(new UserResponseDTO(user.getName(), user.getEmail(), user.getBankAccounts(), user.getAccountPlans()), token);
     }
 }
