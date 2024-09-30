@@ -11,7 +11,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -33,6 +35,9 @@ public class BankAccount {
 
     @Column(name = "account_balance")
     private Double accountBalance;
+
+    @Column(name = "account_started")
+    private LocalDateTime accountStarted;
 
     @Column(name = "account_type")
     @Enumerated(EnumType.STRING)
