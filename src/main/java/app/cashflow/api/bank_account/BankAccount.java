@@ -6,14 +6,10 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -27,9 +23,15 @@ public class BankAccount {
     @GeneratedValue
     private Long id;
 
+    @NonNull
+    @Column(name = "account_BankName")
+    private String accountBankName;
+
+    @NonNull
     @Column(name = "account_agency")
     private String accountAgency;
 
+    @NonNull
     @Column(name = "account_number")
     private String accountNumber;
 
@@ -39,6 +41,7 @@ public class BankAccount {
     @Column(name = "account_started")
     private LocalDateTime accountStarted;
 
+    @NonNull
     @Column(name = "account_type")
     @Enumerated(EnumType.STRING)
     private AccountType accountType;

@@ -19,6 +19,7 @@ public class BankAccountService {
     public BankAccount save(BankAccount bankAccount) {
         User authenticatedUser = getAuthenticatedUser();
         bankAccount.setUser(authenticatedUser);
+        bankAccount.setAccountStarted(java.time.LocalDateTime.now());
         return bankAccountRepository.save(bankAccount);
     }
 
